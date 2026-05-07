@@ -1,6 +1,6 @@
-# 1) Crie um programa no qual o usuário informe a idade de um número indeterminado de
-# alunos. Para encerrar a leitura dos dados, o usuário deve informar uma idade negativa.
-# No final, o programa deve mostrar a média aritmética entre a maior e a menor idade
+#1) Crie um programa no qual o usuário informe a idade de um número indeterminado de
+#alunos. Para encerrar a leitura dos dados, o usuário deve informar uma idade negativa.
+#No final, o programa deve mostrar a média aritmética entre a maior e a menor idade
 
 idade = 0
 maiorIdade = 0
@@ -9,9 +9,7 @@ menorIdade = 0
 while idade >= 0:
     idade = int(input("Informe a idade: "))
 
-    if(idade > 0 and menorIdade == 0):
-        menorIdade = idade
-    if(idade > 0 and idade < menorIdade):
+    if(idade > 0 and (idade < menorIdade or menorIdade == 0)) :
         menorIdade = idade
     if(idade > maiorIdade):
         maiorIdade = idade
