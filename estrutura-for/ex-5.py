@@ -4,9 +4,13 @@
 # Por exemplo, o fatorial de 5 é 5 x 4 x 3 x 2 x 1 = 120.
 
 numero = int(input("Informe o número: "))
-fatorial = 0
+fatorial = 1
 
-for i in range(numero - 1, 0, -1):
-    fatorial += (i + 1) * i
+if numero < 0:
+    print("Não existe fatorial de números negativos!")
+    exit()
+
+for i in range(numero, 0, -1):
+    fatorial *=  i
 
 print(f"O fatorial de {numero} é {fatorial}") 

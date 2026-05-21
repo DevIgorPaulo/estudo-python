@@ -16,6 +16,7 @@ c = 1
 
 while c <= 15:
     nota = int(input(f"Informe a {c}ª nota: "))
+    
     if(0 <= nota <= 5):
         c += 1
     else:
