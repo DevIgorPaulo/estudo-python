@@ -10,6 +10,7 @@
 # porcentagem de votos nulos em relação ao total de votos e a porcentagem de
 # votos em branco em relação ao total de votos.
 
+# Contadores de votos
 votosCandidato1 = 0
 votosCandidato2 = 0
 votosCandidato3 = 0
@@ -17,42 +18,66 @@ votosCandidato4 = 0
 votosNulos = 0
 votosBrancos = 0
 
-for i in range (21):
-    voto = int(input("Informe o voto: "))
+# Recebe os 20 votos
+for i in range(20):
+    voto = int(input(f"Informe o voto da pessoa {i+1}: "))
 
     if voto == 1:
         votosCandidato1 += 1
     elif voto == 2:
-        votosCandidato2 +=1
+        votosCandidato2 += 1
     elif voto == 3:
-        votosCandidato3 +=1
+        votosCandidato3 += 1
     elif voto == 4:
-        votosCandidato4 +=1
+        votosCandidato4 += 1
     elif voto == 5:
-        votosNulos +=1
+        votosNulos += 1
     elif voto == 6:
-        votosBrancos +=1
+        votosBrancos += 1
+    else:
+        print("Voto inválido!")
 
-porcentagemNulos = votosNulos / 20 * 100 
-porcentagemBrancos = votosBrancos / 20 * 100 
+# Cálculo das porcentagens
+porcentagemNulos = (votosNulos / 20) * 100
+porcentagemBrancos = (votosBrancos / 20) * 100
 
-if (votosCandidato1 > votosCandidato2 and votosCandidato1 > votosCandidato3 and votosCandidato1 > votosCandidato4 ):
-    ganhador = 1
-elif (votosCandidato2 > votosCandidato1 and votosCandidato2 > votosCandidato3 and votosCandidato2 > votosCandidato4 ):
-    ganhador = 2
-elif (votosCandidato3 > votosCandidato1 and votosCandidato3 > votosCandidato2 and votosCandidato3 > votosCandidato4 ):
-    ganhador = 3
-elif (votosCandidato4 > votosCandidato1 and votosCandidato4 > votosCandidato2 and votosCandidato4 > votosCandidato3 ):
-    ganhador = 4
+# Descobrir vencedor
+maiorVotos = max(
+    votosCandidato1,
+    votosCandidato2,
+    votosCandidato3,
+    votosCandidato4
+)
 
-print("-------------------- RESULTADO --------------------")
-print(f"| Votos Candidatos 1:      {votosCandidato1}                      |")
-print(f"| Votos Candidatos 2:      {votosCandidato2}                      |")
-print(f"| Votos Candidatos 3:      {votosCandidato3}                      |")
-print(f"| Votos Candidatos 4:      {votosCandidato4}                      |")
-print(f"| Votos Nulos:             {votosNulos}                      |")
-print(f"| Votos Brancos:           {votosBrancos}                      |")
-print(f"| Porcentagem dos Nulos:   {porcentagemNulos}                   |")
-print(f"| Porcentagem dos Brancos: {porcentagemBrancos}                   |")
-print(f"| O GANHADOR FOI O CANDIDATO: {ganhador}                   |")
-print("---------------------------------------------------")
+qtdGanhadores = 0
+
+if maiorVotos == votosCandidato1:
+    ganhador = "Candidato 1"
+    qtdGanhadores += 1
+if maiorVotos == votosCandidato2:
+    ganhador = "Candidato 2"
+    qtdGanhadores += 1
+if maiorVotos == votosCandidato3:
+    ganhador = "Candidato 3"
+    qtdGanhadores += 1
+if maiorVotos == votosCandidato4:
+    ganhador = "Candidato 4"
+    qtdGanhadores += 1
+
+if qtdGanhadores > 1:
+    ganhador = "Houve um empate!"
+
+
+
+# Resultado
+print("\n---------------- RESULTADO ----------------")
+print(f"Votos Candidato 1: {votosCandidato1}")
+print(f"Votos Candidato 2: {votosCandidato2}")
+print(f"Votos Candidato 3: {votosCandidato3}")
+print(f"Votos Candidato 4: {votosCandidato4}")
+print(f"Votos Nulos: {votosNulos}")
+print(f"Votos Brancos: {votosBrancos}")
+print(f"Porcentagem de Nulos: {porcentagemNulos:.2f}%")
+print(f"Porcentagem de Brancos: {porcentagemBrancos:.2f}%")
+print(f"Ganhador: {ganhador}")
+print("-------------------------------------------")
